@@ -1,0 +1,36 @@
+/* Custom styling for a white and pink theme */
+body {
+    background-color: #fff;
+    color: #333;
+    font-family: 'Georgia', serif;
+    overflow-x: hidden;
+    margin: 0;
+    padding: 0;
+}
+
+h1, h2 {
+    color: #ff69b4; /* Soft pink color for headings */
+}
+
+.container {
+    max-width: 800px;
+    margin: auto;
+    padding: 20px;
+}
+
+.section {
+    background: #ffe4e1; /* Light pink background for sections */
+    box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.1);
+    border-radius: 15px;    
+    padding: 20px;
+    margin-bottom: 30px;
+}
+
+/* Customize link colors if any */
+a {
+    color: #ff69b4;
+}
+
+a:hover {
+    color: #ff1493;
+}
