@@ -8,13 +8,58 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css">
     <!-- AOS CSS for scroll animations -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css">
-    <!-- Custom CSS -->
-    <link rel="stylesheet" href="css/style.css">
+    <style>
+        /* Custom Styling */
+        body {
+            background-color: #fff;
+            color: #333;
+            font-family: 'Georgia', serif;
+            overflow-x: hidden;
+            margin: 0;
+            padding: 0;
+            background-image: url('background.jpg'); /* Adjust this if background.jpg is in a different location */
+            background-size: cover;
+            background-attachment: fixed;
+            background-position: center;
+        }
+        h1, h2 {
+            color: #ff69b4;
+        }
+        .container {
+            max-width: 800px;
+            margin: auto;
+            padding: 20px;
+        }
+        .section {
+            background: #ffe4e1;
+            box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.1);
+            border-radius: 15px;    
+            padding: 20px;
+            margin-bottom: 30px;
+        }
+        .btn-outline-secondary {
+            color: #ff69b4;
+            border-color: #ff69b4;
+        }
+        .btn-outline-secondary:hover {
+            color: #fff;
+            background-color: #ff69b4;
+        }
+        #particles-js, #particles-js-2 {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            z-index: -1;
+        }
+    </style>
 </head>
 <body>
 
-    <!-- Particle Background -->
-    <div id="particles-js"></div>
+    <!-- Particle Backgrounds -->
+    <div id="particles-js"></div> <!-- First particle layer -->
+    <div id="particles-js-2"></div> <!-- Second particle layer with complementary color -->
 
     <!-- Main Content -->
     <div class="container">
@@ -49,8 +94,18 @@
                 <source src="audio/endless.mp3" type="audio/mp3">
                 Your browser does not support the audio element.
             </audio>
-            <button id="play-button" onclick="playAudio()">Play Music</button>
+            <button id="play-button" onclick="playAudio()" class="btn btn-outline-secondary">Play Music</button>
             <p>Here’s a song that makes me think of you every time I hear it. Just for you, my love. 🎶</p>
+        </div>
+
+        <!-- Memories Section with Google Photos Link -->
+        <div class="section text-center" data-aos="fade-up" data-aos-duration="1500">
+            <h2>Memories on Your Special Day</h2>
+            <p>Click the button below to view all our memories from today.</p>
+            <a href="https://photos.app.goo.gl/NDEbqA2cjHz81gVC6" target="_blank" class="btn btn-outline-secondary my-2">
+                View All Memories
+            </a>
+            <p class="mt-3 text-muted">To see additional photos or videos, please open the Google Photos album link above.</p>
         </div>
     </div>
 
@@ -71,75 +126,46 @@
             once: true,
         });
 
-        // Initialize Particles.js with custom settings
+        // Initialize First Particle Layer with Pink Color
         particlesJS("particles-js", {
             particles: {
-                number: {
-                    value: 80,
-                    density: {
-                        enable: true,
-                        value_area: 700
-                    }
-                },
-                color: {
-                    value: "#ff69b4"
-                },
+                number: { value: 80, density: { enable: true, value_area: 700 } },
+                color: { value: "#ff69b4" }, // Romantic pink color
                 shape: {
                     type: "circle",
-                    stroke: {
-                        width: 0,
-                        color: "#000000"
-                    },
+                    stroke: { width: 0, color: "#000000" }
                 },
-                opacity: {
-                    value: 0.6,
-                    random: false
-                },
-                size: {
-                    value: 6,
-                    random: true
-                },
-                line_linked: {
-                    enable: true,
-                    distance: 120,
-                    color: "#ff69b4",
-                    opacity: 0.8,
-                    width: 2
-                },
-                move: {
-                    enable: true,
-                    speed: 1.5,
-                    direction: "none",
-                    random: false,
-                    straight: false,
-                    out_mode: "bounce",
-                    attract: {
-                        enable: false,
-                        rotateX: 600,
-                        rotateY: 1200
-                    }
-                }
+                opacity: { value: 0.6, random: false },
+                size: { value: 6, random: true },
+                line_linked: { enable: true, distance: 120, color: "#ff69b4", opacity: 0.8, width: 2 },
+                move: { enable: true, speed: 1.5, direction: "none", random: false, straight: false, out_mode: "bounce" }
             },
             interactivity: {
                 detect_on: "canvas",
-                events: {
-                    onhover: {
-                        enable: true,
-                        mode: "repulse"
-                    },
-                    onclick: {
-                        enable: true,
-                        mode: "push"
-                    }
+                events: { onhover: { enable: true, mode: "repulse" }, onclick: { enable: true, mode: "push" } },
+                modes: { repulse: { distance: 100 }, push: { particles_nb: 4 } }
+            },
+            retina_detect: true
+        });
+
+        // Initialize Second Particle Layer with Light Pink Color
+        particlesJS("particles-js-2", {
+            particles: {
+                number: { value: 60, density: { enable: true, value_area: 700 } },
+                color: { value: "#ffb6c1" }, // Light pink color for the second layer
+                shape: {
+                    type: "circle",
+                    stroke: { width: 0, color: "#000000" }
                 },
-                modes: {
-                    repulse: {
-                        distance: 100
-                    },
-                    push: {
-                        particles_nb: 4
-                    }
-                }
+                opacity: { value: 0.4, random: false },
+                size: { value: 4, random: true },
+                line_linked: { enable: true, distance: 100, color: "#ffb6c1", opacity: 0.5, width: 1 },
+                move: { enable: true, speed: 1, direction: "none", random: false, straight: false, out_mode: "bounce" }
+            },
+            interactivity: {
+                detect_on: "canvas",
+                events: { onhover: { enable: true, mode: "bubble" }, onclick: { enable: true, mode: "repulse" } },
+                modes: { bubble: { distance: 150, size: 8, duration: 2, opacity: 0.8 }, repulse: { distance: 120 } }
             },
             retina_detect: true
         });
